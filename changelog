@@ -17,9 +17,15 @@ To-do:
 +	0016	add support for "error" event handler
 
 !	0008	test event handlers
-!	0015	test selection and hover events when table contains HTML elements
 
 Changelog:
+
+v0.6b
+@	launched beta
+@	posted gViz.Table on GitHub (https://github.com/asgallant/gViz.Table)
+@	fixed some CSS bugs in IE
+
+*	0015	test selection and hover events when table contains HTML elements
 
 v0.5a
 @	changed user options parsing to clone options via JSON.parse(JSON.stringify())

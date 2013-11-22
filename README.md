@@ -13,7 +13,7 @@ If you have any issues with this extension, open an issue on [GitHub](https://gi
 
 Contribution
 ------------
-Any contribution is highly appreciated. The best way to contribute code is to open a [pull request on GitHub](https://help.github.com/articles/using-pull-requests).  In particular, I could really use a hand with the default styling (especially in IE!).
+Any contribution is highly appreciated. The best way to contribute code is to open a [pull request on GitHub](https://help.github.com/articles/using-pull-requests) of the [gViz.Table](https://github.com/asgallant/gViz.Table) package.  In particular, I could really use a hand with the default styling (especially in IE!).
 
 Developer
 ---------
