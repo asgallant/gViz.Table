@@ -1,0 +1,115 @@
+/*	
+ *	gViz.Table Visualization Library Copyright (c) 2013, Andrew Gallant.  All rights reserved.
+ *	
+ *	This file is part of the gViz.Table Visualization Library
+ *	
+ *	The gViz.Table Visualization Library is free software: you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License as published by the Free Software
+ *	Foundation, either version 3 of the License, or (at your option) any later version.
+ *	
+ *	The gViz.Table Visualization Library is distributed in the hope that it will be useful, but
+ *	WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ *	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ *	
+ *	You should have received a copy of the GNU General Public License along with the gViz.Table
+ *	Visualization Library.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.gViz-table {
+	border-collapse: collapse;
+	border: 1px solid #909090;
+}
+.gViz-table-thead-tr, .gViz-table-thead-th, .gViz-table-page-first, .gViz-table-page-previous, .gViz-table-page-number.gViz-table-page-current, .gViz-table-page-next, .gViz-table-page-last {
+	/* gradient is "Grey-Blue 3D" from http://www.colorzilla.com/gradient-editor/ */
+	background: #cfe7fa; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2NmZTdmYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2MzkzYzEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top, #cfe7fa 0%, #6393c1 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cfe7fa), color-stop(100%,#6393c1)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #cfe7fa 0%,#6393c1 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #cfe7fa 0%,#6393c1 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #cfe7fa 0%,#6393c1 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #cfe7fa 0%,#6393c1 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfe7fa', endColorstr='#6393c1',GradientType=0 ); /* IE6-8 */
+}
+.gViz-table-tbody-tr-even, .gViz-table-tbody-column-even {
+	background-color: #cfe7fa;
+}
+.gViz-table-tbody-tr-odd, .gViz-table-tbody-column-odd {
+	background-color: #ffffff;
+}
+tr.gViz-table-tbody-tr-hover, td.gViz-table-tbody-td-hover, td.gViz-table-tbody-column-hover {
+	background-color: #9fcff5;
+}
+.gViz-table-tbody-tr-selected, .gViz-table-tbody-td-selected, .gViz-table-tbody-column-selected {
+	background-color: #cffae7;
+}
+.gViz-table-thead-th, .gViz-table-tbody-td {
+	border: 1px solid #707070;
+}
+.gViz-table-thead-th, .gViz-table-tbody-td .gViz-table-tbody-td-contents {
+	margin: 0 0 0 0;
+	padding: 5px 10px 5px 10px;
+}
+.gViz-table-fixed-column-width, .gViz-table-tbody-td {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+.gViz-table-tbody-td-number, .gViz-table-tbody-td-row-number {
+	text-align: right;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.gViz-table-tbody-td-boolean {
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.gViz-table-tbody-td-date, .gViz-table-tbody-td-datetime, .gViz-table-tbody-td-string, .gViz-table-tbody-td-timeofday {
+	text-align: left;
+}
+.gViz-table-page-first, .gViz-table-page-previous, .gViz-table-page-number, .gViz-table-page-next, .gViz-table-page-last, .gViz-table-page-ellipsis {
+	display: inline-block;
+	margin: 5px 2px 5px 2px;
+	padding: 2px 2px 2px 2px;
+	color: #606060;
+	text-align: center;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+.gViz-table-page-first, .gViz-table-page-previous, .gViz-table-page-number.gViz-table-page-current, .gViz-table-page-next, .gViz-table-page-last {
+	border: 1px ButtonShadow outset;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+span.gViz-table-page-disabled {
+	color: #303030;
+	background: #e4e4e4; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2U0ZTRlNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5MjkyOTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  #e4e4e4 0%, #929292 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e4e4e4), color-stop(100%,#929292)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #e4e4e4 0%,#929292 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #e4e4e4 0%,#929292 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #e4e4e4 0%,#929292 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #e4e4e4 0%,#929292 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4e4e4', endColorstr='#929292',GradientType=0 ); /* IE6-8 */
+}
+.gViz-table-thead-th.sortable, .gViz-table-page span {
+	cursor: pointer;
+}
+.gViz-table-tbody {
+	cursor: cell;
+}
+.gViz-table-sort-arrows {
+	font-size: 0.5em;
+	color: #606060;
+	text-align: center;
+}
+.gViz-table-sort-arrows .disabled{
+	display: none;
+}
+.gViz-table-error {
+	background-color: #a00000;
+	color: #ffffff;
+}

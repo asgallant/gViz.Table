@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>gViz.Table demo</title>
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="gViz.Table.js"></script>
+	<link rel="stylesheet" type="text/css" href="gViz.Table.css" />
+	<script type='text/javascript'>
+		//<![CDATA[ 
+
+		function drawChart() {
+			var data = new google.visualization.DataTable();
+			data.addColumn({type: 'number', label: 'Year', p: {width: 50}});
+			data.addColumn({type: 'number', label: 'Widgets', p: {width: 170}});
+			data.addColumn({type: 'number', label: 'Gadgets', p: {width: 170}});
+			data.addColumn({type: 'number', label: 'Revenue', p: {width: 170}});
+			data.addColumn({type: 'number', label: 'Cost of Sales', p: {width: 170}});
+			data.addColumn({type: 'number', label: 'Net Profit', p: {width: 170}});
+			
+			var row = [1990, 2500, 2500, 5000, 5000, 0];
+			var cost = {widgets: 1, gadgets: 2};
+			var price = {widgets: 1.5, gadgets: 2.2};
+			for (var i = 0; i < 20; i++) {
+				row[0]++;
+				for (var j = 1; j < 5; j++) {
+					row[j] += Math.floor(Math.random() * 250 * Math.ceil(j / 2)) * Math.pow(-1, Math.floor(Math.random() * 2));
+					if (row[j] < 0) {
+						row[j] += 500 * Math.ceil(j / 2);
+					}
+					if (row[j] > 10000) {
+						row[j] -= 500 * Math.ceil(j / 2);
+					}
+				}
+				cost.widgets += Math.ceil(Math.random() * 100) * Math.pow(-1, Math.ceil(Math.random() * 2)) / 500;
+				cost.gadgets += Math.ceil(Math.random() * 100) * Math.pow(-1, Math.ceil(Math.random() * 2)) / 500;
+				price.widgets += Math.ceil(Math.random() * 100) * Math.pow(-1, Math.ceil(Math.random() * 2)) / 500;
+				price.gadgets += Math.ceil(Math.random() * 100) * Math.pow(-1, Math.ceil(Math.random() * 2)) / 500;
+				
+				row[3] = row[1] * price.widgets + row[2] * price.gadgets;
+				row[4] = row[1] * cost.widgets + row[2] * cost.gadgets;
+				
+				row[5] = row[3] - row[4];
+				data.addRow(row);
+			}
+			
+			var formatter1 = new google.visualization.NumberFormat({pattern: '#,### units'});
+			formatter1.format(data, 1);
+			formatter1.format(data, 2);
+			var formatter2 = new google.visualization.NumberFormat({pattern: '$#,###'});
+			formatter2.format(data, 3);
+			formatter2.format(data, 4);
+			var formatter3 = new google.visualization.NumberFormat({pattern: '$#,###;($#,###)'});
+			formatter3.format(data, 5);
+			
+			var chart = new gViz.Table(document.getElementById('table_div'));
+			google.visualization.events.addListener(chart, 'ready', function (e) {
+				//console.dir(e);
+			});
+			
+			chart.draw(data, {
+				paging: {
+					enabled: true,
+					pageSize: 5,
+					maxPageButtons: 5
+				},
+				selection: {
+					element: 'cell'
+				},
+				headers: [{type: 'column'}, {
+					label: 'Sales Report',
+					type: 'group',
+					headers: [{
+						label: 'Unit Sales',
+						type: 'group',
+						headers: [{type: 'column'}, {type: 'column'}]
+					}, {
+						label: 'Cash Flow',
+						type: 'group',
+						headers: [{type: 'column'}, {type: 'column'}]
+					}, {type: 'column', label: data.getColumnLabel(5) + ' (Loss)'}]
+				}]
+			});
+		}
+		google.load('visualization', '1', {packages:['table'], callback: drawChart});
+		//]]>
+	</script>
+	<style type="text/css">
+		#main {
+			width: 900px;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<div id="table_div"></div>
+	</div>
+</body>
+</html>
+

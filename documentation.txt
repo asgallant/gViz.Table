@@ -1,0 +1,131 @@
+/*	
+ *	gViz.Table Visualization Library Copyright (c) 2013, Andrew Gallant.  All rights reserved.
+ *	
+ *	This file is part of the gViz.Table Visualization Library
+ *	
+ *	The gViz.Table Visualization Library is free software: you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License as published by the Free Software
+ *	Foundation, either version 3 of the License, or (at your option) any later version.
+ *	
+ *	The gViz.Table Visualization Library is distributed in the hope that it will be useful, but
+ *	WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ *	PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ *	
+ *	You should have received a copy of the GNU General Public License along with the gViz.Table
+ *	Visualization Library.  If not, see <http://www.gnu.org/licenses/>.
+ */
+Data Format:
+
+Options:
+	allowHtml: (boolean, default false) set to true to allow HTML values in the table
+	headers: (array) an array of header objects
+		a header object has the properties:
+			attributes: (Object) object of HTML attributes to assign in the header's <col> element, overrides the header's attributes in the DataTable, used only for "column" type headers
+			label: (string) a string for the header label, overrides the header's label in the DataTable for "column" type headers
+			headers: (array) an array of header objects (used only when type is "group")
+			htmlLabel: (boolean), set to true to allow HTML in the header label (used only if the label is specified in the header object, overrides the global "allowHtml" option)
+			type: (string) string specifying the type of the header object; set to "column" to use a standard header, set to "group" to create a column group with one or more sub-headers
+		if specified, the headers option should contain a total number of "column" type header objects (either in the main option or as sub-headers in a column group) equal to the number of columns in the DataTable
+		a Table can have many layers of column groups
+	height: (integer, default null) set the height of the table in pixels; if the browser renders the table taller than this, the table will have a vertical scrollbar on the right
+	hover: (Object) object setting options related to hover effects
+		element: (string, default 'row') set the elements to show a hover effect for (valid values are "row", "column", "cell", and "none")
+		enabled: (boolean, default true) set to true to enable hover effects
+	paging: (Object) object setting options related to table pagination
+		buttonLocation: (string, default 'footer') set this string to the location the page buttons should be placed (valid values are 'header', 'footer', and 'both')
+		custom: (boolean, default false) set to true to enable custom paging (requires registering a "page" event handler); disables the automatic paging when users click the page buttons
+		enabled: (boolean, default false) set to true to enable table pagination
+		firstPageNumber: (integer, default 1) set the page number to use as the starting value for pages
+		maxPageButtons: (integer, default 10) set the maximum number of page number buttons to display at one time; if there are more pages than this number, ellipses will be displayed before or after the page numbers as needed
+		pageButtons: (Object) object setting options related to the page buttons
+			first: (string, default 'First') string to use as the label for the button that moves the user to the first page
+			previous: (string, default 'Previous') string to use as the label for the button that moves the user to the previous page
+			next: (string, default 'Next') string to use as the label for the button that moves the user to the next page
+			last: (string, default 'Last') string to use as the label for the button that moves the user to the last page
+		pageSize: (integer, default 10) number of rows per page
+		startPage: (integer, default 0) index of the page to start on; the pages are zero-indexed, so the first page is 0; this value is independent of the "firstPageNumber" option, which controls only the text displayed to the user
+	rowNumbers: (Object) object setting options related to row numbering
+		enabled: (boolean, default false) set to true to enable row numbering
+		firstRowNumber: (integer, default 1) set the row number to use as the starting value for rows
+	scrollLeftStartPosition: (integer, default 0) set this option to set the starting horizontal scroll position of the table (when the table is wide enough to warrant scrolling) in pixels from the left edge
+	scrollTopStartPosition: (integer, default 0) set this option to set the starting vertical scroll position of the table (when the table is tall enough to warrant scrolling) in pixels from the top edge
+	select: (Object) object setting options related to selecting elements in the table
+		allowMultiSelect: (boolean, default true) set to true to allow users to select multiple elements
+		enabled: (boolean, true) set to true to enable users to select table elements
+		element: (string, default 'row') set the type of element to be selected when a user clicks on a table element (valid values are 'row', 'column, and 'cell')
+	sort: (Object) object setting options related to table sorting
+		ascending: (boolean, default true) set to true to make the initial table sort by ascending values
+		custom: (boolean, default false) set to true to enable custom sorting (requires registering a "sort" event handler); disables the automatic sorting when users click the table headers
+		enabled: (boolean, default true) set to true to enable sorting the table by clicking on column headers
+		initialColumn: (integer, default null) set to the DataTable column index of the column to sort the table by initially
+		showArrows: (boolean, default true) set to true to show arrows in the column headers indicating sorting direction
+	style: {
+		alternatingPattern: (string, default 'rows') set the element to apply an alternating pattern to in the table (valid values are "row", "column", and "none")
+		classNames: (Object) object setting the classes to use for the various table elements
+			table: (string, default 'gViz-table') class to assign to the table
+			tableHeader: (string, default 'gViz-table-thead') class to assign to the table header
+			tableBody: (string, default 'gViz-table-tbody') class to assign to the table body
+			tableFooter: (string, default 'gViz-table-tfoot') class to assign to the table footer
+			evenRow: (string, default 'gViz-table-tbody-tr-even') class to assign to the even rows
+			footerRow: (string, default 'gViz-table-tfoot-tr') class to assign to the footer rows
+			headerRow: (string, default 'gViz-table-thead-tr gViz-table-gradient') class to assign to the header rows
+			hoverRow: (string, default 'gViz-table-tbody-tr-hover') class to assign to the hovered-over rows
+			oddRow: (string, default 'gViz-table-tbody-tr-odd') class to assign to the odd rows
+			selectedRow: (string, default 'gViz-table-tbody-tr-selected') class to assign to the selected rows
+			row: (string, default 'gViz-table-tbody-tr') class to assign to the rows in the table body
+			footerCell: (string, default 'gViz-table-tfoot-td') class to assign to the cells in the footer
+			headerCell: (string, default 'gViz-table-thead-th') class to assign to the cells in the header
+			hoverCell: (string, default 'gViz-table-tbody-td-hover') class to assign to the hovered-over cells
+			rowNumberCell: (string, default 'gViz-table-tbody-td-row-number') class to assign to the cells containing the row numbers
+			selectedCell: (string, default 'gViz-table-tbody-td-selected') class to assign to the selected cells
+			tableCell: (string, default 'gViz-table-tbody-td') class to assign to the cells in the table body
+			booleanCell: (string, default 'gViz-table-tbody-td-boolean') class to assign to cells with a "boolean" data type
+			dateCell: (string, default 'gViz-table-tbody-td-date') class to assign to cells with a "date" data type
+			dateTimeCell: (string, default 'gViz-table-tbody-td-datetime') class to assign to cells with a "datetime" data type
+			numberCell: (string, default 'gViz-table-tbody-td-number') class to assign to cells with a "number" data type
+			stringCell: (string, default 'gViz-table-tbody-td-string') class to assign to cells with a "string" data type
+			timeOfDayCell: (string, default 'gViz-table-tbody-td-timeofday') class to assign to cells with a "timeofday" data type
+			column: (string, default 'gViz-table-tbody-column') class to assign to the table columns
+			evenColumn: (string, default 'gViz-table-tbody-column-even') class to assign to the even numbered columns
+			hoverColumn: (string, default 'gViz-table-tbody-column-hover') class to assign to the hovered-over columns
+			oddColumn: (string, default 'gViz-table-tbody-column-odd') class to assign to the odd numbered columns
+			rowNumberColumn: (string, default 'gViz-table-tbody-column-row-number') class to assign to the row number column
+			selectedColumn: (string, default 'gViz-table-tbody-column-selected') class to assign to the selected columns
+		overrideDefault: (boolean, default true) set to true to have user-specified classes and css override the table's defaults; set to false to apply both the user-specified and default classes and css
+		css: {
+			table: (string, default null) css to assign to the table
+			tableHeader: (string, default null) css to assign to the table header
+			tableBody: (string, default null) css to assign to the table body
+			tableFooter: (string, default null) css to assign to the table footer
+			evenRow: (string, default null) css to assign to the even rows
+			footerRow: (string, default null) css to assign to the footer rows
+			headerRow: (string, default null) css to assign to the header rows
+			hoverRow: (string, default null) css to assign to hovered-over rows
+			oddRow: (string, default null) css to assign to the odd rows
+			selectedRow: (string, default null) css to assign to the selected rows
+			row: (string, default null) css to assign to the rows in the table body
+			footerCell: (string, default null) css to assign to the cells in the footer
+			headerCell: (string, default null) css to assign to the cells in the header
+			hoverCell: (string, default null) css to assign to the hovered-over cells
+			rowNumberCell: (string, default null) css to assign to the cells containing the row numbers
+			selectedCell: (string, default null) css to assign to the selected cells
+			tableCell: (string, default null) css to assign to the cells in the table body
+			booleanCell: (string, default null) css to assign to cells with a "boolean" data type
+			dateCell: (string, default null) css to assign to cells with a "date" data type
+			dateTimeCell: (string, default null) css to assign to cells with a "datetime" data type
+			numberCell: (string, default null) css to assign to cells with a "number" data type
+			stringCell: (string, default null) css to assign to cells with a "string" data type
+			timeOfDayCell: (string, default null) css to assign to cells with a "timeofday" data type
+			column: (string, default null) css to assign to the table columns
+			evenColumn: (string, default null) css to assign to the even numbered columns
+			hoverColumn: (string, default null) css to assign to the hovered-over columns
+			oddColumn: (string, default null) css to assign to the odd numbered columns
+			rowNumberColumn: (string, default null) css to assign to the row number column
+			selectedColumn: (string, default null) css to assign to to the selected columns
+		}
+	},
+	width: (integer, default null) set the width of the table in pixels; if the browser renders the table wider than this, the table will have a horizontal scrollbar at the bottom
+
+Methods:
+
+Events:

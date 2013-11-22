@@ -1,0 +1,66 @@
++ new feature
+# new bug
+! new testing to do
+* resolved
+@ notes
+- retracted feature or planned bugfix
+
+To-do:
+
++	0001	add support for footer
++	0002	add support for fully custom header
++	0003	add support for rotating table to draw DataTable rows as columns and vis-versa
++	0005	implement rtlTable option
++	0009	implement custom classes for all table elements
++	0010	add support for user-specified column widths
++	0011	add support for 508-compliance
++	0016	add support for "error" event handler
+
+!	0008	test event handlers
+!	0015	test selection and hover events when table contains HTML elements
+
+Changelog:
+
+v0.5a
+@	changed user options parsing to clone options via JSON.parse(JSON.stringify())
+	this eliminates any copy-by-reference and asserts that the options do not contain
+	any circular references and takes advantage of browser optimizations for JSON parsing.
+@	refactored code for assigning class names and css styles
+@	cleaned up code a bit
+
+*	0017	add support for arbitrary user-specified element attributes
+
+v0.4a
+@	updated documentation
+@	refactored column header code to account for new method of specifying column headers
+
+*	0004	add support for mouseover, mouseout, and click event handlers
+*	0006	implement scrollLeftStartPosition and scrollTopStartPosition options
+*	0007	fix selection and hover events when table contains HTML elements
+*	0012	add sort arrows to display direction of sort on a column
+*	0013	table sort throws error when there are selected rows or cells in the chart that don't appear after sorting
+*	0014	add support for custom paging handlers
+
++	0016	add support for "error" event handler
++	0017	add support for arbitrary user-specified element attributes
+
+!	0015	test selection and hover events when table contains HTML elements
+
+v0.3a
+@	changelog created
+
++	0001	add support for footer
++	0002	add support for fully custom header
++	0003	add support for rotating table to draw DataTable rows as columns and vis-versa
++	0005	implement rtlTable option
++	0006	implement scrollLeftStartPosition and scrollTopStartPosition options
++	0009	implement custom classes for all table elements
++	0010	add support for user-specified column widths
++	0011	add support for 508-compliance
++	0012	add sort arrows to display direction of sort on a column
++	0014	add support for custom paging handlers
+
+#	0007	fix selection and hover events when table contains HTML elements
+#	0013	table sort throws error when there are selected rows or cells in the chart that don't appear after sorting
+
+!	0008	test event handlers
