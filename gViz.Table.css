@@ -1,5 +1,5 @@
 /*	
- *	gViz.Table Visualization Library Copyright (c) 2013, Andrew Gallant.  All rights reserved.
+ *	gViz.Table Visualization Library Copyright (c) 2013, Andrew Gallant (gViz.developer@gmail.com).  All rights reserved.
  *	
  *	This file is part of the gViz.Table Visualization Library
  *	
