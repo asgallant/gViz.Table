@@ -4,7 +4,7 @@ The gViz.Table Visualization is an extension to the Google Visualization API tha
 
 Important Source Files
 ------------
-gViz.Table.js - gViz.Table's javascript file (required)
+gViz.Table.js - gViz.Table's javascript file (required)<br />
 gViz.Table.css - gViz.Table's default CSS (optional)
 
 Support
@@ -17,7 +17,7 @@ Any contribution is highly appreciated. The best way to contribute code is to op
 
 Developer
 ---------
-Andrew Gallant
+Andrew Gallant<br />
 [gViz.developer@gmail.com](gViz.developer@gmail.com)
 
 License
