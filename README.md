@@ -9,7 +9,7 @@ gViz.Table.css - gViz.Table's default CSS (optional)
 
 Support
 -------
-If you have any issues with this extension, open an issue on [GitHub](https://github.com/company/Company_ExampleExtension/issues).
+If you have any issues with this extension, open an issue on [GitHub](https://github.com/asgallant/gViz.Table/issues).
 
 Contribution
 ------------
